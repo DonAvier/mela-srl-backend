@@ -19,13 +19,15 @@ app.use((req, res, next) => {
 });
 
 app.post('/send-email', async (req, res) => {
-    console.log(req.body);
+    console.log("Body ricevuto dal frontend:", req.body);
     const { email, oggetto, messaggio } = req.body;
+    console.log(`Chiamo MailSender con: emailUtente=${email}, oggetto=${oggetto}, messaggio=${messaggio}`);
 
     try {
-        await MailSender.sendMailPromise( email, oggetto, messaggio);
+        await MailSender.sendMailPromise(email, oggetto, messaggio);
         res.status(200).json({ success: true, message: "Email inviata con successo" });
     } catch (error) {
+        console.error("Errore durante l'invio:", error);
         res.status(500).json({ success: false, message: error });
     }
 });

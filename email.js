@@ -14,18 +14,19 @@ class MailSender {
         });
     }
 
-    sendMailPromise(reciver, oggetto, messaggio) {
+    sendMailPromise(emailUtente, oggetto, messaggio) {
         return new Promise((resolve, reject) => {
-
             this.transport.sendMail({
-                from: "michele.lunghi.mailsender@gmail.com",
-                email: "michelelunghi98@gmail.com",
-                oggetto: oggetto,
-                messaggio: messaggio,
-            }, function (err) {
+                from: '"MELA SRL" <michele.lunghi.mailsender@gmail.com>',   // usa nome + mail
+                to: "michelelunghi98@gmail.com",  // fisso
+                subject: `Nuovo contatto dal sito - ${oggetto}`,
+                text: `Hai ricevuto un messaggio dal sito.\n\nEmail del mittente: ${emailUtente}\n\nMessaggio:\n${messaggio}`,
+            }, (err, info) => {
                 if (!err) {
-                    resolve('Email sent');
+                    console.log("Email inviata:", info.response);
+                    resolve('Email inviata con successo');
                 } else {
+                    console.error("Errore nodemailer:", err);
                     reject(err.message);
                 }
             });
@@ -33,5 +34,4 @@ class MailSender {
     }
 }
 
-// Esporta MailSender come default
 export default new MailSender();
