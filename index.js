@@ -25,7 +25,7 @@ app.post('/send-email', async (req, res) => {
 
     try {
         await MailSender.sendMailPromise(email, oggetto, messaggio);
-        res.status(200).json({ success: true, message: "Email inviata con successo" });
+        res.redirect('https://mela-srl-git-main-spookit-consulting.vercel.app/pages/home.html');
     } catch (error) {
         console.error("Errore durante l'invio:", error);
         res.status(500).json({ success: false, message: error });
