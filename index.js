@@ -32,6 +32,12 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
+app.get('/test', async (req, res) => {
+    console.log("Chiamata GET ricevuta");
+    
+    return res.status(200).json({ success: true, message: "GET OK" });
+});
+
 app.listen(3000, () => {
     
     console.log("Server listening on http://localhost:3000");
