@@ -9,7 +9,7 @@ class MailSender {
             secure: false,
             auth: {
                 user: "michele.lunghi.mailsender@gmail.com",
-                pass: "uigt tuzl vmau jjvn",
+                pass: "tktf yzzz nrkk podn",
             },
         });
     }
