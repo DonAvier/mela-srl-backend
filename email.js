@@ -18,7 +18,7 @@ class MailSender {
         return new Promise((resolve, reject) => {
             this.transport.sendMail({
                 from: '"MELA SRL" <michele.lunghi.mailsender@gmail.com>',   // usa nome + mail
-                to: "michelelunghi98@gmail.com",  // fisso
+                to: "melav@melav.it",  // fisso
                 subject: `Nuovo contatto dal sito - ${oggetto}`,
                 text: `Hai ricevuto un messaggio dal sito.\n\nEmail del mittente: ${emailUtente}\n\nMessaggio:\n${messaggio}`,
             }, (err, info) => {
